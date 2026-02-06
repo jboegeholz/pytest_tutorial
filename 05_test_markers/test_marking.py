@@ -1,14 +1,18 @@
 import pytest
+import sys
 
-
-@pytest.mark.windows
-def test_windows_version():
+@pytest.mark.skip(reason="Feature not yet implemented")
+def test_future():
     pass
 
-@pytest.mark.linux
-def test_linux_version():
+@pytest.mark.skipif(sys.platform == "win32", reason="Linux only")
+def test_linux_only():
     pass
 
-@pytest.mark.mac_os
-def test_stuff_mac_os():
+@pytest.mark.xfail(reason="Bug #123")
+def test_known_bug():
+    pass
+
+@pytest.mark.slow
+def test_slow_test():
     pass
